@@ -3,12 +3,16 @@ selenium-hub:
     remove: true
     p:
       - 4444:4444
-    description: Selenium hub with firefox/chrome nodes
+    description: Selenium hub with firefox/chrome/phantomjs nodes
 selenium-node-firefox:
     image: selenium/node-firefox
     link: selenium-hub:hub
     remove: true
 selenium-node-chrome:
     image: selenium/node-chrome
+    link: selenium-hub:hub
+    remove: true
+selenium-node-phantomjs:
+    image: akeem/selenium-node-phantomjs
     link: selenium-hub:hub
     remove: true
