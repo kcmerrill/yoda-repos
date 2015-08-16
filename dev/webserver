@@ -1,0 +1,15 @@
+webserver:
+ description: A simple PHP webserver
+ pull: true
+ require:
+  - kcmerrill/automagicproxy
+ image: kcmerrill/base
+ remove: true
+ name: ${PWD##*/}
+ setup:
+    - mkdir html
+    - echo "it works!" > www/index.php
+ P: true
+ v:
+  - $PWD:/var/www
+ notes: Your sandbox is running ${PWD##*/}.$HOSTNAME

@@ -1,0 +1,8 @@
+mongodb:
+ image: mongo
+ p:
+  - 27017:27017
+ description: A mongo db instance!
+ notes: Please note, that by default the ports are exposed on the host!
+ control:
+  - mongo

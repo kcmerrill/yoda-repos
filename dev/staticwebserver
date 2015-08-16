@@ -1,0 +1,12 @@
+webserver:
+ description: A simple static webserver(contents in current directory)
+ pull: true
+ require:
+  - kcmerrill/automagicproxy
+ image: kcmerrill/base
+ remove: true
+ name: ${PWD##*/}
+  P: true
+ v:
+  - $PWD:/var/www/html
+ notes: Your static webserver is running ${PWD##*/}.$HOSTNAME

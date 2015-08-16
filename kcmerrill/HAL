@@ -1,0 +1,23 @@
+hal:
+ description: Real time web goodness. A simple pub/sub web socket event system.
+ notes:
+  - Hal is listening on port 80 for web requests and port 8080 for web socket requests.
+ require:
+ - kcmerrill/automagicproxy
+ - db/mongo
+ image: kcmerrill/hal
+ remove: true
+ P: true
+ p:
+  - 8080:8080
+ env:
+  dev:
+   setup:
+    - git clone git@github.com:kcmerrill/hal.git src
+    - docker run -v $PWD/src:/app composer/composer update
+   build: src/
+   push: true
+   v:
+    - $PWD/src:/var/www
+  build:
+   build: src/

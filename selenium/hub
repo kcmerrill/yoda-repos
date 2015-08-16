@@ -1,0 +1,14 @@
+selenium-hub:
+    image: selenium/hub
+    remove: true
+    p:
+      - 4444:4444
+    description: Selenium hub with firefox/chrome nodes
+selenium-node-firefox:
+    image: selenium/node-firefox
+    link: selenium-hub:hub
+    remove: true
+selenium-node-chrome:
+    image: selenium/node-chrome
+    link: selenium-hub:hub
+    remove: true

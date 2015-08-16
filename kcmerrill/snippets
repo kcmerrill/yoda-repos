@@ -1,0 +1,22 @@
+snippets:
+ require:
+  - kcmerrill/automagicproxy
+  - db/mongo
+ image: kcmerrill/snippets
+ pull: true
+ remove: true
+ P: true
+ description: A personal Gist repository
+ notes:
+  - Your snippets is running snippets.$HOSTNAME
+ env:
+   log:
+    control:
+      - tail -f /var/log/apache2/:2.log
+   push:
+    push: true
+    build: .
+   dev:
+    build: .
+    v:
+     - $PWD:/var/www
