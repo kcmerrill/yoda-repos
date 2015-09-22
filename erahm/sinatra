@@ -1,0 +1,13 @@
+sinatra:
+    description: Sinatra REST API
+    require:
+        - kcmerrill/automagicproxy
+    image: erahm/sinatra
+    build: src/
+    remove: true
+    name: ${PWD##*/}
+    P: true
+    setup:
+        - git clone git@github.com:erahm/sinatra-docker.git src && cd src/ && git checkout master
+    v:
+        - $PWD/src:/usr/src/app
