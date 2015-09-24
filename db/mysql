@@ -1,0 +1,9 @@
+mysqldb:
+ image: mysql
+ description: A mysql database
+ notes: Please note, that by default the ports are exposed on the port. Use internal to use links instead.
+ e:
+    - MYSQL_ROOT_PASSWORD="Dr0wsappo!!"
+ env:
+    internal:
+        P: true
