@@ -6,7 +6,7 @@ webserver:
  image: kcmerrill/base
  remove: true
  name: ${PWD##*/}
-  P: true
+ P: true
  v:
   - $PWD:/var/www/html
  notes: Your static webserver is running ${PWD##*/}.$HOSTNAME
