@@ -1,5 +1,5 @@
 slim3:
-    description: Slim3 API base
+    description: Slim3 API base using PHP7
     require:
         - kcmerrill/automagicproxy
     image: erahm/slim3
