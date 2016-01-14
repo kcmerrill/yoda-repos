@@ -7,7 +7,14 @@ slim3:
     build: src/
     name: ${PWD##*/}
     P: true
+    w: /var/www/html
     setup:
-        - git clone git@github.com:erahm/slim3-docker.git src && cd src/ && git checkout master && cd app/ && ./composer.phar install
+        - git clone git@github.com:erahm/slim3-docker.git src && cd src/ && git checkout master
+        - docker exec -ti ${PWD##*/} useradd $USER -u $(id -u)
+        - docker exec -ti -u $(id -u) ${PWD##*/} ./composer.phar update
+    update:
+        - docker exec -ti ${PWD##*/} useradd $USER -u $(id -u) || true
+        - docker exec -ti -u $(id -u) ${PWD##*/} ./composer.phar update
     v:
         - $PWD/src/app/:/var/www/html
+        - $HOME/.ssh:$HOME/.ssh
