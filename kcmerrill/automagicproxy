@@ -10,7 +10,7 @@ automagicproxy:
  remove: true
  p: 80:80
  e:
-  - AUTOMAGIC_PORTS=9999
+  - AUTOMAGIC_PORTS=9999,8080
   - AUTOMAGIC_TIMEOUT=1000000
  v:
   - $PWD/config:/automagicproxy/config

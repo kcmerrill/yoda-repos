@@ -1,0 +1,6 @@
+jenkins:
+    require:
+        - kcmerrill/automagicproxy
+    P: true
+    v:
+        - $PWD:/var/jenkins_home

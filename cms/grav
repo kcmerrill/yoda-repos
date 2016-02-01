@@ -1,0 +1,18 @@
+webserver:
+ description: CMS flat file (getgrav.org)
+ pull: true
+ require:
+  - kcmerrill/automagicproxy
+ image: kcmerrill/base
+ remove: true
+ name: ${PWD##*/}
+ P: true
+ v:
+  - $PWD/src:/var/www/html
+ setup:
+  - git clone git@github.com:getgrav/grav.git src
+  - cd src && docker run -ti --rm -w $PWD -v $PWD:$PWD --entrypoint="./bin/grav" kcmerrill/base install
+  - cd src && docker run -ti --rm -w $PWD -v $PWD:$PWD --entrypoint="./bin/gpm" kcmerrill/base install admin
+  - cd src && docker run -ti --rm -w $PWD -v $PWD:$PWD --entrypoint="chmod" kcmerrill/base -R 755 $PWD
+  - cd src && docker run -ti --rm -w $PWD -v $PWD:$PWD --entrypoint="chown" kcmerrill/base -R www-data:www-data $PWD
+ notes: Your grav webserver is running ${PWD##*/}.$HOSTNAME
